@@ -205,7 +205,7 @@ uv venv --python ${PYTHON_VERSION}
 source .venv/bin/activate
 
 # Add core dependencies
-uv add requests pandas openpyxl altair vegafusion vegafusion-python-embed vl-convert-python seaborn statsmodels scikit-learn scikit-learn-intelex python-dotenv
+uv add requests pandas openpyxl altair vegafusion vegafusion-python-embed vl-convert-python matplotlib statsmodels scikit-learn scikit-learn-intelex python-dotenv
 
 if [ "$INSTALL_LLM_DEPS" = "y" ] || [ "$INSTALL_LLM_DEPS" = "yes" ]; then
     uv add transformers gradio tokenizers huggingface-hub optimum accelerate bitsandbytes safetensors einops sentencepiece
