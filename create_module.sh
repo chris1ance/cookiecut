@@ -37,13 +37,14 @@ cd "$project_name"
 ├── docs/              # Project docs
 │   └── references/    # Static, external reference documents
 ├── data/           
-│   └── raw/           # Static, externally obtained input data files
-│   └── generated/     # Data generated from scripts
+│   └── input/         # Static, externally obtained input data files
+│   └── output/        # Data generated from scripts
 │   └── exports/       # Human-readable (e.g. CSV or Excel) data exports
 ├── models/            # Trained and serialized models and model details
 ├── reports/           # Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures/       # Generated graphics and figures to be used in reporting
 ├── scripts/
+│   └── __init__.py           
 ├── notebooks/         # Jupyter notebooks
 ├── src/
 │   └── {project_name}/
@@ -53,15 +54,16 @@ COMMENT
 
 # Create directory structure
 mkdir -p src/"$project_name" tests docs scripts notebooks data models
-mkdir -p data/raw
-mkdir -p data/generated
+mkdir -p data/input
+mkdir -p data/output
 mkdir -p data/exports
 mkdir -p docs/references
 mkdir -p reports/figures
-touch src/"$project_name"/__init__.py
 
 # Create empty files
-touch README.md LICENSE CHANGELOG.md .gitignore .pre-commit-config.yaml .python-version .env config.yaml
+touch README.md LICENSE CHANGELOG.md .gitignore .pre-commit-config.yaml .env config.yaml
+touch src/"$project_name"/__init__.py
+touch scripts/__init__.py
 
 # Add README.md
 cat > README.md << EOL
