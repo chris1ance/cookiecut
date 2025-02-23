@@ -6,7 +6,7 @@
 # Get project and module names
 read -p "Enter project name: " project_name
 read -p "Install LLM dependencies [y/n]: " INSTALL_LLM_DEPS
-read -p "Make installable package: [y/n]" INSTALLABLE_PKG
+read -p "Make installable package: [y/n]: " INSTALLABLE_PKG
 
 # Pin Python 3.11
 PYTHON_VERSION=3.11
@@ -198,24 +198,8 @@ EOL
 # Finish
 echo "Project structure created successfully in ./${project_name}"
 
-# Initialize conda for shell
-eval "$(conda shell.bash hook)"
-
-# Check if uv is installed in conda base env, if so update, else install
-conda activate base
-if conda list | grep -q "^uv "; then
-   echo "Updating uv..."
-   conda update -n base uv -y
-else
-   echo "Installing uv..."
-   conda install -n base uv -y
-fi
-
 # Create a virtual environment with uv
 uv venv --python ${PYTHON_VERSION}
-
-# Deactivate base environment
-conda deactivate
 
 # Activate venv before installing
 source .venv/bin/activate
